@@ -7,7 +7,7 @@ namespace MasterDetail.Models
 {
     public class ServiceItem
     {
-        public int ServiceId { get; set; }
+        public int ServiceItemId { get; set; }
         public string ServiceItemCode { get; set; }
         public string ServiceItemName { get; set; }
         public decimal Rate { get; set; }
