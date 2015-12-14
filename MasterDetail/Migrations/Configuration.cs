@@ -10,7 +10,7 @@ namespace MasterDetail.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(MasterDetail.Models.ApplicationDbContext context)
@@ -45,7 +45,8 @@ namespace MasterDetail.Migrations
             context.InventoryItems.AddOrUpdate(ii => ii.InventoryItemCode,
                 new InventoryItem { InventoryItemCode = "THING2", InventoryItemName = "A Second Kind of Thing", UnitPrice = 3.33m, CategoryId = category.CategoryId });
             context.ServiceItems.AddOrUpdate(si => si.ServiceItemCode,
-                new ServiceItem {ServiceItemCode="CLEAN",ServiceItemName="General Cleaning",Rate=23.50m });
+                new ServiceItem { ServiceItemCode = "CLEAN", ServiceItemName = "General Cleaning", Rate = 23.50m });
+       
         }
     }
 }

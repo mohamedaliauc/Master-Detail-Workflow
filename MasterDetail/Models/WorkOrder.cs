@@ -10,7 +10,7 @@ namespace MasterDetail.Models
         public int WorkOrderId { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-        public DateTime OrderDateTime { get; set; }
+        public DateTime? OrderDateTime { get; set; }
         public DateTime? TargetDateTime { get; set; }
         public DateTime? DropDeadDateTime { get; set; }
         public string Description { get; set; }
