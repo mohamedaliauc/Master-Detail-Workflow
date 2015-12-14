@@ -5,7 +5,15 @@
 }
 
 <h2>Edit</h2>
+<div id="partsModal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="partsModalContent">
 
+            </div>
+        </div>
+    </div>
+</div> 
 
 @using (Html.BeginForm())
 {
@@ -28,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.OrderDateTime, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderDateTime,"DateWithPicker")
+                @Html.EditorFor(model => model.OrderDateTime, "DateWithPicker")
                 @Html.ValidationMessageFor(model => model.OrderDateTime)
             </div>
         </div>
@@ -80,7 +88,13 @@
                 @Html.ValidationMessageFor(model => model.CertificationRequirements)
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-offset-2 col-md-10">
+                @Model.WorkOrderId
+                @{Html.RenderAction("Index", "Parts", new { workOrderId = Model.WorkOrderId });
+                  }
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />
@@ -95,4 +109,5 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/workorder.js"></script>
 }

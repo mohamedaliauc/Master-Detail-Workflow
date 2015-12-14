@@ -16,10 +16,12 @@ namespace MasterDetail.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: /Parts/
-        public async Task<ActionResult> Index()
+        public  ActionResult Index(int workOrderId)
         {
-            var parts = db.Parts.Include(p => p.WorkOrder);
-            return View(await parts.ToListAsync());
+            var parts = db.Parts
+                .Where(p=>p.WorkOrderId==workOrderId)
+                .OrderBy(p=>p.InventoryItemCode);
+            return PartialView("_Index", parts.ToList());
         }
 
         // GET: /Parts/Details/5
@@ -38,7 +40,7 @@ namespace MasterDetail.Controllers
         }
 
         // GET: /Parts/Create
-        public ActionResult Create()
+        public ActionResult Create(int workOrderId)
         {
             ViewBag.WorkOrderId = new SelectList(db.WorkOrders, "WorkOrderId", "Description");
             return View();
