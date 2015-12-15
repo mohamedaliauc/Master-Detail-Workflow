@@ -57,7 +57,7 @@ namespace MasterDetail.Controllers
             {
                 db.Parts.Add(part);
                 await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return Json(new { success=true});
             }
 
             ViewBag.WorkOrderId = new SelectList(db.WorkOrders, "WorkOrderId", "Description", part.WorkOrderId);

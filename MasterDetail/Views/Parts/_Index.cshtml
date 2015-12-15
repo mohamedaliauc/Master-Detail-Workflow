@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MasterDetail.Models.Part>
+
+
+<p>
+   
+</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <strong>Parts List</strong>
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.WorkOrder.Description)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.InventoryItemCode)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.InventoryItemName)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.UnitPrice)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.ExtendedPrice)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.Notes)
+                </th>
+                <th class="text-right">
+                    @Html.DisplayNameFor(model => model.IsInstalled)
+                </th>
+                <th>@Html.ActionLink("Create New", "Create", "Parts", new { workOrderId = ViewBag.WorkOrderId }, new { @class = "btn btn-primary", data_modal = "" })</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkOrder.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InventoryItemCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InventoryItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExtendedPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsInstalled)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Parts", new { id = item.PartId, workOrderId = ViewBag.WorkOrderId }, new { @class = "btn btn-default",data_modal="" }) |
+                       
+                        @Html.ActionLink("Delete", "Delete", "Parts", new { id = item.PartId, workOrderId = ViewBag.WorkOrderId }, new { @class = "btn btn-danger", data_modal = "" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+   
+
+</div>

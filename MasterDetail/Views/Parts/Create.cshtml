@@ -1,14 +1,18 @@
 ﻿@model MasterDetail.Models.Part
 
 @{
-    ViewBag.Title = "Create";
+    
+    Layout = "";
 }
 
-<h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id="partchoice"}))
 {
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal" aria-hidden="true">&times;</a>
+        <h4 class="modal-title">Add New Part</h4>
+    </div>
+    <p id="MessageToClient" class="text-danger"></p>
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
@@ -72,18 +76,10 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+      
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <div class="modal-footer">
+        <a class="btn btn-default" data-dismiss="modal">Cancel</a>
+        <input class="btn btn-primary" type="submit" value="Add"/>
+    </div>
 }
